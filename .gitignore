@@ -1,0 +1,3 @@
+# all the configurations, connection strings, URLs and secrets to be not pushed to GitHub, thus here below.
+node_modules
+.env

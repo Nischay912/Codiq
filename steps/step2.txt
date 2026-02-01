@@ -1,0 +1,15 @@
+Now we will be creating our express app in the server.js file > now normally to do so : we do -
+
+const express = require('expresss'); 
+
+This is called the commonJs syntax ; but we want to use a modern syntax i.e. -
+
+import express from "express"
+
+To use this > we go under "package.json" > then there add the following -
+
+"type" : "module",
+
+So, now we can use import/export in the files everywhere now there, thus here below.
+
+See the next steps now in server.js file now there, thus here below.

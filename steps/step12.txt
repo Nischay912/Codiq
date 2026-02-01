@@ -1,0 +1,23 @@
+Now if we do some changes in server.js like change the console log, then we will not see the immediate change in the terminal there ; we will have to kill the terminal using CTRL+C and then run "npm run dev" again there.
+
+So to prevent this : we can do in package.json > "dev": "node --watch server.js" OR install in terminal > "npm i nodemon@3.1.10 -D ; here we do "-D" as we want this to be used only in development mode, not when the server is deployed as we will be making server to restart everytime we make changes to it only here in development and not restart the live deployed server everytime there by logic ; so we do "-D" to install it under devDependencies in the package.json file there.
+
+And then we do in package.json : "dev": "nodemon server.js" and so now any changes we make will be watched and will be changed immediately in the terminal and at the loclahost:3000 there, thus here below.
+
+Now we see that the frontend folder given to use by VITE has all the code files like App.jsx in the "src" folder there, so lets make the same in backend too to look systematic.
+
+So create "src" folder and put serve.js file into it to follow the convention, thus here below.
+
+And make other folders thats generally a convention to make in the backend folder like : controllers, models, routes, lib, middleware ; thus here below.
+
+But now the temrinal would have crashed as we changed the location of "server.js" ; so we update its location in package.json file's script too to : "src/server.js" there, thus here below.
+
+Also in package.json , its given " main": "index.js", " by default there, but we have the main file of backedn as server.js and not index.js , so can change that too there, thus here below.
+
+Also : we will like to put the PORT into the environment variables file of the backend instead of hardcoding it in the codebase ; so we create a ".env" file in the backend folder and put the PORT there, thus here below.
+
+So we put all the configurations, important connection strings, urls and secrets in this file there, thus here below.
+
+But in server.js file if we do : console.log(process.env.PORT) > it will show "undefined" in the terminal there ; its because , in order to use the environment variables in other files, we should use the "dotenv" package that we installed earlier there, thus here below.
+
+So, see the next steps in server.js file now there, thus here below.

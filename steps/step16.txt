@@ -1,0 +1,5 @@
+Now : we will be able to see the console log of environment variables there as we have used the dotenv package there and run its config method ; but what if we need to access the environment variables in many files ; then we will have to write these lines : "import dotenv from 'dotenv' " and then "dotenv.config()" in all those files ; so its better to globalize it somewhere and use it whenever needed from there itself, thus here below.
+
+So now : we create a env.js file in lib folder > and there keep the import statements there and export all the environment variables from there, so that it can then be imported in any other file and used there directly noe there, thus here below.
+
+So see the next steps in env.js file now there, thus here below.

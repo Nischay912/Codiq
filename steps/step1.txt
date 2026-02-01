@@ -1,0 +1,17 @@
+We should have NodeJs installed ; to check > open terminal > type : "node --version" > if any error comes means node not installed > then go on NodeJs website and download it.
+
+Then we go in terminal > cd frontend ( type fr.. and press TAB to choose the directory automatically to be changed to) and then download and setup the React app there, using "VITE".
+
+So : "cd frontend" > "npm create vite@latest ." (space and dot at end because we want to initialize it in the current selected directory/folder itself there, so "." tells to create all its folders here only, thus here below) > can even do : @7.1.3 to align with the same version as when made this project in future.
+
+Choose React > JavaScript > "npm install" to get all the packages in node_modules folder > "npm run dev" to run the application, because in the package.json file we have scripts as : "dev" for vite ; if it was "hello" : "vite" there, we would do > "npm run hello" there > thus we get the basic react application running at that link there, thus here below.
+
+Now : lets initialize the Backend > kill the terminal > open again and do > "cd backend" > lets now initialize a NodeJs application > "npm init -y" to get the package.json file (-y means do "yes" for all questions thats asked if we dont do -y with npm install there).
+
+Then : "npm i express@5.1.0 mongoose@8.19.1 dotenv@17.2.3" > Here mongoose is used to connect to the database MongoDB, dotenv helps to access the environment variables in all files using this & express is the web framework which is like a toolbox that has everything that we need, so we don't need to do much thing if we use Express as it includes many things that will be needed there to build the website, thus here below.
+
+Now : we can check this by creating a file "server.js" in backend and doing console.log("Hey there") and in temrinal > cd backend > "node server.js" and see the console log there, when the server.js file runs there, thus here below.
+
+But this is not the best way to run > we go in package.json > and add some scripts to run the server of backend from now-on there > delete the scripts present there by default > then : we do there that > "dev" : "node server.js" ; so that now if we do : "npm run dev" > it will run the "dev" script i.e. node server.js indirectly there now, thus here below.
+
+See the next steps now in step2.txt file now there.
