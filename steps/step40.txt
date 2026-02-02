@@ -1,0 +1,3 @@
+Now : lets connect to the database using MongoDB > mongodb.com > sign in > projects dropdown > view all projects > new project > name it > next > create project > +create > FREE plan > aws provider > create deployment > copy the password > create database user > choose a connection method > Drivers (as we want to connect it from our NodeJs application) > copy the connection string and put password in it > paste in .env > there in connection string , we have mongodb.net/? , so there we add a name before the "?", so that the database gets that name, else it will be called as "Test" by default there, thus here below.
+
+See the next steps in db.js file now there, thus here below.

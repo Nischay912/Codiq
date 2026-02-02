@@ -1,0 +1,15 @@
+Now in the MongoDB website : we can go on Database & network access tab there > IP access list > add ip address > 0.0.0.0/0 to allow access from anywhere , as we are just in development here and not want any errors there, thus here below.
+
+Then we go on "clerk.com" > sign in > dashboard > near the already made application on top there, we use dropdown and then > create application > put application name > choose email and google options and continue > create application > choose react > then step1 of downloading vite is already done > then in step2 copy the command > open terminal > cd frontend > paste the command "npm install @clerk/clerk-react" > next step there is to create a .env in the frontend and put the clerk publihsable key from the website there > then next step is to paste the next set of code there -
+
+const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
+
+if (!PUBLISHABLE_KEY) {
+  throw new Error('Missing Publishable Key')
+}
+
+; in main.jsx there ; the above code is used to get that clerk key and if that key is not provided error is thrown, else we wrap the application with the <ClerkProvider /> component like in step5 on that page, thus there in main,jsx file ; so that in the entire app we can use this clerk and its hook & functions now there, thus here below.
+
+ALos put the import of <ClerkProvider /> from that step5 code there in main.jsx ka top there, thus here below.
+
+See the next steps in App.jsx file now there, thus here below.

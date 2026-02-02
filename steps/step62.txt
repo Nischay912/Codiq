@@ -1,0 +1,9 @@
+Now : we will click on the master on bottom left and then create new branch > stage all changes by clicking + next to the changes when hovered on it in the GIT icon section, commit with a message and then publish the branch.
+
+Then go on github > compare and pull request > create pull request.
+
+Now if we did some more changes after doing one commit earlier , then > we need to again go on GIT icon section > stage changes by clicking + there > add message and commit > sync chnages > and now on github we'll see 2 commits in the commits section there too > so now in github under the conversation tab > merge pull request > confirm merge.
+
+Come back here > click the branch_name in bottom left corner > select master > and then click the () refresh icon on bottom left to make all changes merged here in vs code too, thus here below.
+
+See the next steps in step63.txt file now there.

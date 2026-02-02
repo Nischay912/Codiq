@@ -1,0 +1,15 @@
+But now we are storing the user in the Clerk's database, but we want the user to be stored in MongoDB database as well ; so here we will use INGEST ; clerk will send an event or lets say "web hook" to INNGEST, such as "user.created" and then INNGEST will allow us to run a background job there which is a function that will help to take the user and save it to the MongoDB database , and that function will be like connectToMongoDB and will do user.save with the user's information, thus here below.
+
+Also now here we will be using STREAM to provide video calling, chat messages, etc ; and so we also want to save this user of Clerk to STREAM, thus here below ; also if user is deleted from Clerk we will also delete him from MongoDB and STREAM using the user.delete coming from Clerk's webhook, thus here below.
+
+Now : lets go on inngest.com > sign in using github > put the name as codiq > create ; then we click on the KEY icon in left sidebar > event keys > copy and put in .env of backend as we will be using inngest for background jobs in backend on not on the client side ; similarly click KEY icon and get the signing key from there as well, thus here below.
+
+Then we go on : getstream.io > signin > dashboard > create app > app name > keep environment as development and create > click on any of chats or video, all have same keys and all > click API KEYS > get the key and secret and place in .env file of backend, thus here below.
+
+Then put the env variable of clerk Publishable key in .env of backend as well to use it later for authentication of the user as well there, thus here below ; but its not frontend, so from VITE_CLERK_PUBLISHABLE_KEY ; delete the "VITE" part and then keep in env of backend, thus here below.
+
+Then go on clerk.com > docs > express > scroll and get both key and secret and put in .env of backend, thus here below.
+
+Delete the assets folder from frontend as no use of us, thus here below.
+
+See the next steps in step62.txt file now there.
