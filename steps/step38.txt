@@ -1,0 +1,9 @@
+Now, to create branch for feature and pull and merge we do these steps, thus here below.
+
+CTRL+SHIFT+P > toggle status bar visiblity (if already status bar visible, leave it) > click on the branch name "master" written in the bottom left > create new branch > name it > go in the github icon section > click on + in the same line as "Changes" written there , to stage all the changes > add some commit message > click COMMIT > publish branch > go in github repo > compare and pull request > create PULL request > if we had teammates, they can add comments and screenshots there too > can see the changes made in the branch under the section "COMMITS" there , with things added in GREEN and things removed in RED ; can add comments for a specific line too by clicking the + that appears there when hovered over a line there ; > so now : MERGE THE PULL REQUEST > CONFIRM MERGE > done !
+
+So : we have the latest changes in the github repo , but not in the local development file ; so we now click again on bottom left "branch_name" and then select "master" > then click on the ( ) recycle button present near master in bottom left there, thus here below.
+
+Thus all changes are now synced from Github repository to the local development file/folder here too now, thus here below.
+
+See the next steps in step39.txt file now there.

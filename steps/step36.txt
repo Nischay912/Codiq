@@ -1,0 +1,18 @@
+Now we go in root folder's package.json file, since this will be seen by the render.com ; so we already have there "build" to build the app there ; now to run it , we do : "start": "npm run start --prefix backend" ; thus it will run the npm run start inside the backend folder i.e. the "start": "node src/server.js" file in backend's package.json file there ; thus here below.
+
+So now in terminal > go in root folder > npm run build > then once BUILD SUCCESSFUL > npm run start ; and so our app now will be running there, thus here below.
+
+So : earlier : localhost:3000 was showing the backend part there ; but now will show the localhost:5173 thing there i.e. the react app & this is what we have done i.e. merged the frontend and backedn API under a single URL / single DOMAIN, like for production, thus here below.
+
+And now when we go on "localhost:3000/health" ; the server.js file's /health hits and shows the response JSON there ; but if we go on any other route like "localhost:3000/dashboard" ; its not there in server.js, so it hits /*any we made there and thus show the index.html of dist folder i.e. the React App, thus here below.
+
+NOTE THAT : all this worked when we had set the env varibale as "production" instead of "develeopment" there, thus here below ; as in server.js , the if() runs with /*any only when node_env == production there, thus here below ; but later make it develeopment here in development when doing development , but when deploying to render.com, make it production there, thus here below.
+
+Also : the final URL is localhost:3000 as 5173 was the vite dev server that runs when we do "npm run dev", but it was only for development ; not for real production server ; but the 3000 comes from the backend when we run node src/server.js ; and we had this command only in the root's package.json ; this is what render.com will use when deployed on render.com there ; and the React app of 5173 is now served from the index.html file of dist folder there, thus here below ; i.e. React becomes static files that we did using express.static() in server.js earlier there ; so when broswer hits localhost:3000 ; /health -> API , /assets -> static from dist folder fo frontend , /dashboard -> indx.html -> loads react app as this route not there in server.js backend servers so not gives 404 error , rather loads the react app using /*any route of server.js file there ; so finally -
+
+5173 is Vite dev server (development only)
+3000 is Express server (production server)
+
+After build, Vite stops and Express serves everything ; thus : 5173 is only for Vite development, but in production Express (3000) serves both frontend and backend from one server, thus here below.
+
+See the next steps in step37.txt file now there.
