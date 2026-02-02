@@ -1,9 +1,10 @@
 So we can go on render.com > +New > web service > select the repository > then build command and start command same as the root folder's scripts of package.json i.e. npm run build and npm run start > free plan > paste env variables and make NODE_ENV to production from development, thus here below.
 
-Error comes for "vite" not found as in frontend/package.json we have -
+Error comes for "vite" not found and also : "@vitejs/plugin-react": "^5.0.3" NOT FOUND as in frontend/package.json we have -
 
 "devDependencies": {
-  "vite": "^7.1.7"
+  "vite": "^7.1.7",
+  "@vitejs/plugin-react": "^5.0.3"
 }
 
 so render not installs develeopment devDependencies ; so push it to -
@@ -11,7 +12,10 @@ so render not installs develeopment devDependencies ; so push it to -
 "dependencies": {
   "react": "^19.1.1",
   "react-dom": "^19.1.1",
-  "vite": "^7.1.7"
+  "vite": "^7.1.7",
+  "@vitejs/plugin-react": "^5.0.3"
 }
 
 and commit the changes, thus here below.
+
+It automatically re-deploys there, thus here below.
