@@ -1,0 +1,34 @@
+Now lets first in terminal do > cd backend > npm i inngest@3.44.3 ; to install the package needed to setup inngest, thus here below.
+
+Now we go in server.js and write middlewares there like : express.json > it reads the JSON body from client ; like if user sends > { "name": "Nischay" } ; then : without this middleware : "req.body = undefined" in backend , because : server cannot read JSON directly.
+
+Then we install "cors" middleware too using > cd backend > npm i cors@2.8.5 ; then we import it in server.js file and then : write this middleware too : app.use(cors()) ; the "cors" middleware allows the frontend to call the backend ; as usually frontend and backend are running on different ports like 3000 backend and 5173 frontend ; so different ports = different origins ; so browser blocks it "CORS POLICY BLOCKED" as browser security rule is that "A website cannot call another domain/port directly", thus using cors allows calling backend from frontend and sending response back from backend to frontend, thus here below.
+
+Always write this "cors" middleware before the routes written in the "server.js" file because : always place middleware before the routes because : express runs top to down , so before making the requests to the "routes" it should see these middlewares first and ensure that OK CORS is allowed and also get request from those routes in JSON allowed, thus here below ; so write these before the routes there in server.js file, thus here below.
+
+Now we aso write -
+
+app.use(cors({ origin : ENV.CLIENT_URL, credentials: true })) 
+
+So here : if we don't put origin then any website will be able to call our backend deployed API in production, so we mention the client url, that only this URL can make calls to the backend, thus here below.
+
+Also : the "credentials: true" tells that > allow cookies/tokens/sessions to be sent ; normally browsers blocks cookies across origins/ different ports ; but by stating this we are allowing it now there ; so now cookies sent, user stays logged in and thus Session works now in our website there.
+
+Frontend request
+   ↓
+CORS checks origin
+   ↓
+If allowed → credentials allowed
+   ↓
+Backend responds
+
+; so usually browser sends requests to server and no cookies ; but now with this "credentials: true" > cookies can be sent with req too from frontend to backend, thus here below.
+
+Overall we have -
+
+origin → who can access
+credentials → send cookies or not
+
+----------------------------------------------------------------------------------------------
+
+See the next steps in server.js file now there, thus here below.
