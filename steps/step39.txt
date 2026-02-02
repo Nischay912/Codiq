@@ -1,0 +1,17 @@
+So we can go on render.com > +New > web service > select the repository > then build command and start command same as the root folder's scripts of package.json i.e. npm run build and npm run start > free plan > paste env variables and make NODE_ENV to production from development, thus here below.
+
+Error comes for "vite" not found as in frontend/package.json we have -
+
+"devDependencies": {
+  "vite": "^7.1.7"
+}
+
+so render not installs develeopment devDependencies ; so push it to -
+
+"dependencies": {
+  "react": "^19.1.1",
+  "react-dom": "^19.1.1",
+  "vite": "^7.1.7"
+}
+
+and commit the changes, thus here below.
