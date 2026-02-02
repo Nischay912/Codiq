@@ -6,6 +6,7 @@ import path from "path"
 
 // step19: now to use the env variables here, we can just do import of the varibales stored in env.js file and use them here, thus here below.
 import { ENV } from "../lib/env.js";
+import { connectDB } from "../lib/db.js";
 
 // step13: lets import the dotenv package to be used here to access the environment variables, thus here below.
 // import dotenv from "dotenv"
@@ -60,7 +61,7 @@ if(ENV.NODE_ENV === "production") {
 // step8: then we below start the server using "app.listen()" with mentioning the PORT number where it runs, and once succesfully it runs, then we run the function below to print the following message there in the terminal, thus here below.
 
 // step21: can get the port thus now here below from the env.js file, thus here below.
-app.listen(ENV.PORT, () => {
+/* app.listen(ENV.PORT, () => {
 
     // step9: can do npm run dev and see this in terminal and the  msg at "localhost:3000/health" , thus here below.
 
@@ -72,4 +73,32 @@ app.listen(ENV.PORT, () => {
 
     // step23: see the next steps in step24.txt file now there.
     console.log("Server is running on port:", ENV.PORT)
+
+    // step46: now since the app.listen tells the server to start listening on the port ; so once it starts listening succesfully, now we connect to the database, thus here below.
+
+    // step47: can test this by doing cd backend > npm run dev to see the connected message there, thus here below.
+    connectDB();
 })
+*/
+
+// step48: now we want to make a function to start the connection to database, to make the code look more clean ; so we can put the above code in this function, thus here below.
+const startServer = async () => {
+    try{
+
+        // check for safety to check if the url is undefined or not ; to throw error there itself and prevent app to crash or behave abnormally there later, thus here below.
+        if(!ENV.DB_URL) throw new Error("DB_URL is not defined in the environment variables!")
+
+        // step49: so now we first connect to the database and then it starts listening on the PORT ; to look more cleaner code, thus here below.
+
+        // step50: see the next steps in step51.txt file now there.
+        await connectDB();
+        app.listen(ENV.PORT, () => {
+            console.log("Server is running on port:", ENV.PORT)
+        })
+    }
+    catch(error){
+        console.error("❌ Error starting the server:", error)
+    }
+}
+
+startServer();
