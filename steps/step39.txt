@@ -16,6 +16,8 @@ so render not installs develeopment devDependencies ; so push it to -
   "@vitejs/plugin-react": "^5.0.3"
 }
 
+; AND NEVER THINK LIKE OK I ADDED IT TO dependencies TOO, BUT ITS STILL IN devDependencies ALSO , NOO : NEVER KEEP SAME PACKAGES IN BOTH OF THEM, IT WILL NOT WORK AS EXPECTED THERE, THUS HERE BELOW.
+
 and commit the changes, thus here below.
 
 It automatically re-deploys there, thus here below.
