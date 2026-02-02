@@ -7,6 +7,9 @@ import path from "path"
 // step19: now to use the env variables here, we can just do import of the varibales stored in env.js file and use them here, thus here below.
 import { ENV } from "../lib/env.js";
 import { connectDB } from "../lib/db.js";
+import cors from "cors"
+import { serve } from "inngest/express"
+import { inngest, functions } from "../lib/inngest.js"
 
 // step13: lets import the dotenv package to be used here to access the environment variables, thus here below.
 // import dotenv from "dotenv"
@@ -21,6 +24,27 @@ const app = express();
 
 // step28: now we can get the absolute path of the current directory using the resolve method of the path module, thus here below.
 const __dirname = path.resolve();
+
+// step74: now as per all theory told in step73.txt, we now add middlewares here befroe the routes always (reason tolled in step73.txt), thus here below.
+
+// step75: see the next steps in step76.txt file now there, thus here below.
+app.use(express.json());
+app.use(cors({ origin : ENV.CLIENT_URL, credentials: true }));
+
+// step98: now as per documentation from ingest.com >nodejs > step4 was to create a HTTP endpoint for ingest using the code following as per the documentation, here below.
+
+// step99: now lets have a route for the endpoint "/api/inngest", if we hit this endpoint, then we will run the code below in this route below, thus here below.
+
+// step100: so we use the "app.use()" method to mount something at a specific route i.e. : Attach a middleware/handler to a specific URL path ; so we have this route below to which the INNGEST server will call our backend at & then we use the serve function from inngest package that creates a middleware which acts as a connector between Inngest and Express ; it recieves the events, finds the matching function and then runs it ; we also pass in it : the inngest instance we created earlier , which tells which app we are talking about as we earlier made this instance there with a unique id, so it tells serve() which app this is and where to send the events/logs to and which functions belongs to this app there ; so its like "client" is passed here below for serve() to authenticate that the app we are talking about is the one we created or not ; and then we also pass the array of functions we created there in inngest.js file earlier there ; so serve() here matches the events to the functions and runs it, thus here below.
+
+app.use("/api/inngest", serve({
+    client: inngest,
+
+    // step101: functions: functions : this can be ignored as by rule in JavaScript when key_name === pair_name , then we can just write one of them and still its valid and understood by JavaScript there, thus here below.
+
+    // step102: see the next steps in step103.txt file now there, thus here below.
+    functions
+}))
 
 // console.log(process.env.PORT)
 

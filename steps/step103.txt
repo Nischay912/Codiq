@@ -1,0 +1,5 @@
+Go on clerk.com > users > delete the already signed up user > so that we sign up from scratch and see id the user is being added to MongoDB as well when signing on clerk or not, thus here below.
+
+Now : lets go on > ingest.com > login and all > Apps in sidebar > sync new app > paste the deployed URL with the endpoint we made for inngest in the previous steps in server.js, thus here below i.e. put there "https://codiq.onrender.com/api/inngest" ; but for this we need to deploy the app once again as the latest changes has not been pushed to GITHUB yet there, thus here below.
+
+So : see the next steps in step104.txt file now there, thus here below.

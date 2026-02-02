@@ -1,0 +1,7 @@
+So now we go on clerk.com > dashboard > configure > scroll and click on developers > then click on "webhooks" > add endpoint > click on dropdown of webhook and select inngest > click on connect to ingest > approve > so this will create a new webhook in the production environment on inngest.
+
+Go on inngest.com > webhooks in sidebar > we will see "CLERK" now there , which is the WEBHOOK WE GOT ON INGEST FROM CLERK THERE.
+
+Now go on : clerk.com > in the webhooks page opened there previously, scroll to bottom and click CREATE > click on EDIT options next to subscribed events > scroll and choose "user.created" and "user.deleted" from there > these are the events which tells "when a user is added to clerk" and when its deleted from clerk" > SAVE, thus here below.
+
+See the next steps in inngest.js file now there, thus here below.

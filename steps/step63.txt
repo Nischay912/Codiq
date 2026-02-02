@@ -1,0 +1,7 @@
+Now : we will try to fix the problem fo saving the user saved in Clerk to MongoDB and STREAM now there using INNGEST.
+
+SO : now we will be using WEBHOOKS here : WebHooks are automated messages that are sent whwn something happens ; here in our case that "something" is > when user is created in Clerk > so then Clerk will sent a webhook i.e. user.created to MongoDB and thus save it there ; and the middleman here helping in this is INNGEST.
+
+Its a convention to put model file's names as User i.e. no plural and first letter capital, thus here below.
+
+Now see the next steps in User.js file now there, thus here below.

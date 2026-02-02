@@ -1,0 +1,7 @@
+So : we click on the bottom left "master" and create new branch > name it > in the git icon section press + wheich comes when we hover the changes text there > stage all changes > add commit message and commit the message > publish branch > go on github > compare and pull request > create pull request > merge pull request > confirm merge.
+
+NOTE THAT : if we did all this and then changed something in vs code, then we will agian go in git icon commit and sync changes ; then go on github , from dropdown select the branch_name > it will say this branch is 1 commit ahead of master branch > so click on dropdown of CONTRIBUTE there > open pull request > create pul request > ... all steps smae and finally confirm merge there, thus here below.
+
+Now come back to vs code > click on branch_name in bottom left > select master > click the () refresh icon on bottom left to sync the github changes with the local code here in our computer's vs code as well, thus here below.
+
+So : see the next steps in step105.txt file now there, thus here below.
