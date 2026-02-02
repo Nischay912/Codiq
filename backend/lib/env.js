@@ -6,4 +6,5 @@ dotenv.config()
 // step18: see the next steps in server.js file now there, thus here below.
 export const ENV = {
     PORT: process.env.PORT,
+    NODE_ENV: process.env.NODE_ENV,
 };

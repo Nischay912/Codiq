@@ -1,0 +1,3 @@
+Now : we see that : we have the backend API running at "localhost:3000" and the frontend running at localhost:5173" when we are in DEVELOPMENT ; so now in PRODUCTION, we will want to have only one URL instead of 2 URLs like these like "my_app.com" and then and we will server both frontend and backend API from there ; to do that we just have to write some lines of code now there in server.js file, thus here below.
+
+So : see the next steps in server.js file now there.
