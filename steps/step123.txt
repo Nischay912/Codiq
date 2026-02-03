@@ -1,5 +1,7 @@
 Now : we can see the userId sent from clerk in stream dashboard too with all the details coming from clerk there, thus here below.
 
+Go in > getstream > dashboard > if not see > remove beta. from url and go on > dashboard.getstream.io > chat messaging > explorer > users > nischay912 is the main account of stream ; its always there > but now we can see another "id" that came from clerk there > click to see id name image and all we sent that stream expected there in inngest.js file earlier there, thus here below.
+
 Thus it proves that now the signed in user data is sent to both mongoDb and stream now, thus here below.
 
 See the next steps in step124.txt file now there, thus here below.

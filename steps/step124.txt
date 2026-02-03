@@ -1,0 +1,7 @@
+Now : we have the authentication working on the frontend in the client side > but we have no protection currently on the server side > i.e. all the users can make calls to any route and get to that page here > but we want only the protected users to access those routes > so we will have a middleware implemented now , which will check in the background if the user is authenticated or not there & only then we will run that method there and send a response back there, thus here below.
+
+So > go on clerk.com > docs > express > copy the code > in terminal do > cd backend > "npm install @clerk/express@1.7.41"
+
+Now we have done the steps 2 and 3 already there > now : we will be adding the clerkMiddleware() to our app now > which will add the Auth object to the request/req, thus here below.
+
+So, see the next steps in server.js file now there, thus here below.

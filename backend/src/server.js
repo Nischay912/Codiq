@@ -5,11 +5,16 @@ import express from "express"
 import path from "path"
 
 // step19: now to use the env variables here, we can just do import of the varibales stored in env.js file and use them here, thus here below.
-import { ENV } from "../lib/env.js";
-import { connectDB } from "../lib/db.js";
+import { ENV } from "./lib/env.js";
+import { connectDB } from "./lib/db.js";
 import cors from "cors"
 import { serve } from "inngest/express"
-import { inngest, functions } from "../lib/inngest.js"
+import { inngest, functions } from "./lib/inngest.js"
+
+// step125: now as per documentation there, import his package, thus here below.
+import { clerkMiddleware } from '@clerk/express'
+import { protectRoute } from "./middleware/protectRoute.js";
+import chatRoutes from "./routes/chatRoutes.js"
 
 // step13: lets import the dotenv package to be used here to access the environment variables, thus here below.
 // import dotenv from "dotenv"
@@ -31,6 +36,15 @@ const __dirname = path.resolve();
 app.use(express.json());
 app.use(cors({ origin : ENV.CLIENT_URL, credentials: true }));
 
+// step126: now lets call the clerkMiddleware here before the routes so that it passes this middleware first for authentication and then only allow to access the routes, thus here below.
+
+// step127: so now in the routes below this, this middleware will add "auth" key to the reqeust i.e. currently req.auth is undefined, but it will be now having some value after adding this middleware there, thus here below.
+
+// step128: so this middleware adds "auth" field to the req object, which allows us to do : req.auth() and we can call it as a method now there in the routes written after this middleware below, thus here below.
+
+// step129: see the next steps in protectRoute.js file now there, thus here below.
+app.use(clerkMiddleware())
+
 // step98: now as per documentation from ingest.com >nodejs > step4 was to create a HTTP endpoint for ingest using the code following as per the documentation, here below.
 
 // step99: now lets have a route for the endpoint "/api/inngest", if we hit this endpoint, then we will run the code below in this route below, thus here below.
@@ -46,6 +60,11 @@ app.use("/api/inngest", serve({
     functions
 }))
 
+// step150: now we will have a route for the chats from stream, thus here below ; and we will call the chatRoutes when we hit this endpoint, thus here below.
+
+// step151: see the next steps in chatRoutes.js file now there, thus here below.
+app.use("/api/chat", chatRoutes)
+
 // console.log(process.env.PORT)
 
 // step20: now instead of the above line requiring the import of dotev everytime in all file and then using its config method, now lets get the value of the env varible we want from the key value pair object imported from the env.js file, thus here below.
@@ -59,6 +78,23 @@ app.get("/health", (req,res) => {
     // step7: so now when someone visits "/health" , it sets the status code to 200 meaning "SUCCESS" and shows "Server is healthy and running up successfully!" , thus here below.
     res.status(200).json({ msg : "Server is healthy and running up successfully!"})
 })
+
+// step143: lets make a dummy route to test our middleware, thus here below.
+
+// step144: so when the "/dummy" endpoint is hit, then the middleware runs and the middleware attaches the user we found there to the "req" object here and then if passes successfully , calls the next() there, which runs the next method written after the protectRoute middleware here below i.e. the function written here below in this route only if it passes the middleware successfully there, thus here below.
+
+// step145: can test this by going on > incongnito window as there we are obviously not authenticated and then go on > localhost:3000/dummy > then we will see that we gets re-directed to the home route i.e. "/" there > its because the requireAuth() of the middleware redirects us to the home page if we are not authenticated, thus here below.
+
+// step146: see the next steps in protectRoute.js file now there, thus here below.
+
+/*
+app.get("/dummy", protectRoute, (req,res) => {
+
+    // can access the "user" object attached to req by the middleware in the protectRoute middleware only if we are authenticated ; else it will be undefined, thus here below.
+    // console.log(req.user)
+    res.status(200).json({ msg : "This is a protected route"}) // status code 200 means "SUCCESS"
+})
+*/
 
 // step29: now we can check whether we are development or production using the environment variable here below ; and so for that add the evironment variable in ".env" file as well as in "env.js" file as we are using the env variables from env.js file only like seen earlier also there, thus here below.
 if(ENV.NODE_ENV === "production") {
