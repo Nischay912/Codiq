@@ -1,0 +1,9 @@
+Now as told in step103.txt : we go on inngest.com > Apps from sidebar > sync new app > paste the deployed URL with the endpoint we made for inngest in the previous steps in server.js, thus here below i.e. put there "https://codiq.onrender.com/api/inngest" > sync app > id is same what we gave when making new Ingest earlier in ingest.js file there, thus here below ; and we can see the functions we created there as well at the bottom, thus here below.
+
+Now lets test this out.
+
+Go on our webiste "https://codiq.onrender.com" > sign in > once we sign in , clerk will send a user.created event to the inngest endpoint we made > and thus inngest will run the sync-user function, we made > that we can see on inngest.com > Runs from the left sidebar there > we will see the completed there and then > go on mongodb.com > users collection now will have the document there now, thus here below.
+
+We can test the user deletion as well > go on clerk.com > users > delete the user from there OR on our website after login > click the user button > manage account > security > delete account > go on Runs in inngest > see the delete function we made run and completed there > and data deleted from mongoDb now as well, thus here below.
+
+See the next steps in step106.txt file now there.

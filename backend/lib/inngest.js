@@ -2,6 +2,7 @@
 import { Inngest } from "inngest"
 import { connectDB } from "./db.js"
 import User from "../models/User.js"
+import { deleteStreamUser, upsertStreamUser } from "./stream.js";
 
 // step78: now go on ingest.com > docs > NodeJs > step3 is to create a client to send and recieve events, so copy them and paste it, thus here below.
 
@@ -109,6 +110,15 @@ const sycUser = inngest.createFunction(
 
         // step92: now lets create a new user document in the database in the users collection; as .create is used to create a new document ; so the above object becomes that one document, thus here below.
         await User.create(newUser);
+
+        // step118: so after saving to database, we also want to save it to STREAM ; so we call the function here below that will save it to STREAM, thus here below.
+
+        // step119: stream expects the following data format, so we send that, thus here below & it expects all to be in string, so convert to string if not, thus here below.
+        await upsertStreamUser({
+            id: newUser.clerkId.toString(),
+            name: newUser.name,
+            image: newUser.profileImage
+        });
     }
 )
 
@@ -128,6 +138,11 @@ const deleteUserFromDB = inngest.createFunction(
 
         // step97: see the next steps in server.js file now there, thus here below.
         await User.deleteOne({ clerkId: id });
+
+        // step120: now also use the delete method formed of stream to delete the user from stream dashboard, thus here below.
+
+        // step121: see the next steps in step122.txt file now there, thus here below.
+        await deleteStreamUser(id.toString()); // expects string, so convert to string if not, thus here below
     }
 )
 
