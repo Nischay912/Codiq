@@ -1,0 +1,5 @@
+Now : we can see the userId sent from clerk in stream dashboard too with all the details coming from clerk there, thus here below.
+
+Thus it proves that now the signed in user data is sent to both mongoDb and stream now, thus here below.
+
+See the next steps in step124.txt file now there, thus here below.

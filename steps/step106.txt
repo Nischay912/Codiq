@@ -1,0 +1,5 @@
+Now : lets try to connect the Clerk to STREAM as well i.e. save the user to stream and delete user from stream as well when done on the Clerk website there, thus here below.
+
+Go on getstream.io > dashboard > select the app "Codiq" > chat messaging > no users there currently > so we now go in terminal > cd backend > npm i stream-chat@9.24.0 ; to install the stream packages, thus here below.
+
+Now see the next steps in stream.js file now there.
