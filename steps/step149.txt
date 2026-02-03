@@ -1,0 +1,5 @@
+Now : STREAM tells that if user wants to join a call and send chat messaging and all, then we need to create a token from STREAM ; so we need to have a stream token as well after logging in with clerk.
+
+So, to join a call, we will be sending a request to the API and then generate the token & then we will get the token in forntend with the client back to join the calls of STREAM there.
+
+So : see the next steps in server.js file now there.
