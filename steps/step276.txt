@@ -1,0 +1,90 @@
+/* 
+Now : lets go on > tanstack.com > choose the Tanstack's react-query technology from the sidebar that we will be using here > its used for data fetching mostly.
+
+Now if we in HomePage.jsx , want to fetch some data , without using Tanstack (react query) > then we will have to do as -
+
+const [books, setBooks] = useState([]) : so we have a state here which is initially empty and will store the books 
+
+Now we can also have a state for loading spinner display there, thus here below.
+const [isLoading, setIsLoading] = useState(false) // false initially
+
+Now we will also have a state to show some errors there
+const [error, setError] = useState(null) // null initially
+
+Then we will have a useEffect to fetch the data, and we will run this only once when the page loads, so we keep the empty dependency array there, thus here below.
+
+So here we have written a basic useEffect hook that runs when the page is loaded once for the first time > then it shows the loading spinner > then : we have a try-catch block that we will use to fetch books from the "/api/books" > then : we get the data fetched converted to the JSON format > then we : set the books state to the data fetched > then we load the error to the error state and finally in either of the cases , finally make the loading spinner to disappear there by setting the isLoading state to false there, thus here below.
+
+useEffect(() => {
+    const getBooks = async () => {
+        setIsLoading(true)
+        try{
+            const res = await fetch("/api/books")
+            const data = await res.json()
+            setBooks(data)
+        }
+        catch(error){
+            setError(error)
+        }
+        finally{
+            setIsLoading(false)
+        }
+    }
+    getBooks()
+},[])
+
+So : we see that we need to write so much lines of code to fetch a data i.e. fetch the "books" ; and this is NOT VERY EFFICIENT ; its not because the code is inefficient, but its that -
+
+What if the code fails and we have to re-run this again i.e. we will have to implement re-fetching by ourselves ; also : if user visits a different tab of the browser and comes back to the app's tab 10 minutes later ; then we want to re-fetch the data immediately without the user refreshing the page ; so this is what Tanstack Query does > when we focus on the window, it fetches the data immediately again, so that we can have the latest data there, without having to refresh the page there, thus here below.
+
+So without tanstack , If:
+
+- internet reconnects
+- user switches tab and comes back
+- data becomes old
+- user wants refresh
+
+Then you must manually code all of this.
+
+Example:
+
+window.addEventListener("focus", fetchAgain)
+
+; very messy > also if user goes to different page of the app and comes back again to this page of the app, it makes fetch request again even if new data was not added still, wasting the API calls, so thats why here -
+
+TanStack Query automates ALL of this > Instead of: useEffect + useState + fetch + try/catch and all of this > it just uses > useQuery(), thats it.
+
+and thus now : TanStack Query is a data-fetching library that handles caching, loading states, error handling, refetching, retries, and synchronization automatically, reducing boilerplate code and improving performance.
+
+SO : it also has : "Window Focus Refetching" i.e. when we focus on the window, it fetches the data immediately again i.e. > When the user comes back to your app tab of the window browser after coming from tab of other apps like youtube and all > then when we come back after 10 minutes and click on our app's tab > This action is called window focus and the browser window becomes active again.
+
+So : it fetches the data again i.e. calls API automatically without user refreshing the page to reload the page there > this happens the moment you come back to the tab (not after refresh, not after click) > thus prevents extra coding like : window.addEventListener("focus", fetchBooks) and all > it :User comes back → auto fetch → latest books , thus maintains fresh data always there ; so : Window focus refetching means React Query automatically calls the API again whenever the user returns to the app tab, ensuring the data is always up-to-date, thus here below.
+
+So: now we can go to HomePage.jsx file and now just do > useQuery() to fetch the data using TanStack ; also this useQuery is a hook that gives us many fields like : data fetched, loading state, error state as well , refetch and many more such things in it > thus we don't cretae these states and it comes from TanStack to us directly now here/there, thus here below.
+
+We just have to make a QUERY function in the useQuery > which is now the function that will have the fetch request code to fetch the books and "then" get the response "res" and convert it to res.json there itself in the function, thus here below.
+
+SO now we just call the query hook and pass the query function in it , instead of creating so much states and writing 20 lines of code earlier there, thus here below.
+
+SO: here we use the useQuery to Fetch data for me and manage everything automatically > then the useQuery expects an object with options like -
+
+useQuery({
+   queryKey: ...,
+   queryFn: ...,
+   staleTime: ...,
+   cacheTime: ...
+})
+
+; we so have the queryFn named as it is , can't rename this.
+
+so the queryFn tells how to fetch the data and from where, then we have ".then()", which is used with promises i.e. once the fetch is done, then this "then" tells what to do with the response that came, i.e. here convert it to JSON , so : .then() is a Promise method that runs a function after an asynchronous operation completes successfully. It is used to process the result of fetch(), thus here below.
+
+SO the code for it becomes -
+
+const { data, isLoading, error } = useQuery({
+  queryFn: () => fetch("/api/books").then(res => res.json())
+})
+
+; so it automatically manage loading and errors, and store the result inside the data, thus here below and also the respective info in the corresponding states extracted above from the useQuery's result there, thus here below.
+
+See the next steps in step277.txt file now there, thus here below.

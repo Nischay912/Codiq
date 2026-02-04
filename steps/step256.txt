@@ -1,2 +1,27 @@
 Now : lets setup the frontend part now, thus here below.
 
+We can delete the "dist" folder in "frontend" as its of no need in development, we just had run npm run build earlier to test it, but render.com will do that in production there ; no need of it here in development, thus here below.
+
+Now lets setup the TailwindCSS for our app, thus here below.
+
+Go on tailwindcss.com > v4.1 > docs > using vite > npm create vite and all we had already done , skip that > then do : cd frontend > "npm i tailwindcss@4.1.14 @tailwindcss/vite@4.1.14" > then go in vite.config.js file and copy paste the code from docs there ; so that file mein we inport the tailwindcss and put it along with react() there to use tailwindcss in our entire app now there, thus here below.
+
+Then go in index.css > delete everything > put the import line from the docs there for tailwindcss there, thus here below.
+
+Also delete the App.css file as its not needed now there, thus here below ; since we deletd the App.css file ; so go and remove the import of App.css from the App.jsx file now there, thus here below.
+
+Now we can give the tailwind classes to the tags there, by using className= "" and using the TailwindCSS IntelliSense extension > press ctrl+space while typing the classes there in className to get suggestions automatically there too, thus here below.
+
+Now : TailwindCSS itself is enough, but we will be using daisyUI on top of it, which is a TailwindCSS plugin > its like clearly on the website of daisyUI it says that > we will have to write a lot of className to get a final styled button ; but using daisyUI makes it simpler as it introduces className like "btn" itself and many other such semantics names, that makes this task simpler there, thus here below.
+
+So, first go on daisyui.com > on top right 4 boxes ka square there > choose the theme you like > go in docs by clicking "how to use" there > cd frontend > "npm i -D daisyui@5.3.10" > put the "@plugin "daisyui" " in the index.css file now as per the docs there, thus here below.
+
+Can test it now in App.jsx file now by doing > "<button className="btn btn-secondary">Button</button>" and all there, thus here below.
+
+Now : lets initialize React Router that will help us to navigate anywhere in our page easily without loading the page again and again on browser for every clicks , rather navigating smoothly to different pages easily there, thus here below.
+
+So : cd frontend > "npm i react-router@7.9.4" > then go in Main.jsx and wrap the entire application with this browser router component coming from react router, so that routing is enabled across the whole app i.e. to enable client-side routing for the entire React application and then we can use anything coming from react-router now in our whole application.
+
+Can test it by going in App.jsx file > and wrap the entire return there with <Routes> instead of <> there, thus here below.
+
+Now see the next steps in App.jsx file now there, thus here below.
