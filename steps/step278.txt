@@ -1,0 +1,3 @@
+Now : instead of using "fetch" to make calls to backend APIs, we'll be using axios , which is an alternative to it and even more convenient to use, thus here below.
+
+SO : cd frontend > "npm i axios@1.12.2" > then go in axios.js file and see the next steps in axios.js file now there, thus here below.

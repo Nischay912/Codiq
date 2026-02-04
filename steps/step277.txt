@@ -1,0 +1,9 @@
+Now : lets setup TanStack in main.jsx file > go to main.jsx > and set it up there.
+
+Go to tanstack.com > choose QUERY from left sidebar as we will implement react query fetch/refetch and all talked about in step276.txt file earlier there now, thus here below.
+
+So now : click on DOCS > in terminal do > cd frontend > "npm i @tanstack/react-query@5.90.5" > then go in "main.jsx" file and then > get the imports as mentioned in the docs > then as per the DOCS wrap the entire application with <QueryClientProvider client = {queryClient}> component there ; where : const queryClient = new QueryClient(), so do all this in main.jsx file there, thus here below.
+
+So: after this we can use the "useQuery" and every other thing coming from tanstack anywhere now in our application, thus here below.
+
+See the next steps in step278.txt file now there, thus here below.

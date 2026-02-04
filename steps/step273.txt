@@ -1,0 +1,25 @@
+Now lets set up the toasts > react-hot-toast.com > in the docs there > cd frontend > npm i react-hot-toast > then we have that : in App.jsx file we now want to have multiple components there outside Routes component too, so first have the <> i.e. the react fragment as then only multiple components can be placed in it there, thus here below.
+
+So we put -
+
+<>
+
+<Routes>
+....
+</Routes>
+
+<Toaster />
+
+</>
+
+Thus we add this Toaster component there, so that now we can use the toast notifications anywhere in the application to show success, error, or alert messages globally in the app there, thats why placed it in App.jsx there, thus here below.
+
+Now : we can use this toast anywhere in the app now, thus here below.
+
+Can even do -
+
+<Toaster position="" /> to add position of our choice for the toast message there ; its top-center by default there, thus here below.
+
+<Toaster toastOptions={ {duration: 3000} } /> : to update the duration for the toast to be there and then disappear after 3000ms = 3 sec, thus here below.
+
+See the next steps in HomePage.jsx file now there, thus here below.
