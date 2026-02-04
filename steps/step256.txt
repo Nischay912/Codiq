@@ -1,0 +1,2 @@
+Now : lets setup the frontend part now, thus here below.
+

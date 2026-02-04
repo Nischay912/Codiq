@@ -1,4 +1,4 @@
-import { chatClient, StreamClient } from "../lib/stream.js"
+import { chatClient, streamClient } from "../lib/stream.js"
 import Session from "../models/Session.js"
 
 // step193: now lets create all the controller functions we defined in sessionRoutes.js file, thus here below.
@@ -40,7 +40,7 @@ export async function createSession(req, res) {
         // step204: now we will create a stream video call, using the instance we made in stream.js there for video calls seen there, thus here below.
 
         // step205: the "default" is the call type, we can have livestream, audio, custom, etc... for it too there ; then we also pass the callId for that call in it ; then we call the getOrCreate function to join the call if its exists with this id OR else create a new call with this id, thus here below ; thus its safer than only "create"w ithout checking there, thus here below.
-        await StreamClient.video.call("default", callId).getOrCreate({
+        await streamClient.video.call("default", callId).getOrCreate({
 
             // step206: now we can also send extra information that we want to store with the call here below ; its like metadata or extra fields of React ; so it has who created the call with th clerkId of that user which comes from clerk aurhentication & then we can send our own custom data as well i.e. the problem, difficulty, etc ; thus here below.
             data: {
@@ -267,7 +267,7 @@ export async function endSession(req, res) {
         // step248: now when we end the session, we need to get rid of the video calling session and the chat messaging we have in the STREAM as well there, as we had created them earlier when we created the call/session earlier there, thus here below.
 
         // step249: so lets delete the stream video call, so first get that call using the callId and the type "default" of which it was created in the createSession controller there earlier, thus here below.
-        const call = StreamClient.video.call("default", session.callId);
+        const call = streamClient.video.call("default", session.callId);
 
         // step250: now delete that call & we use hard: true to delete it permanently, thus here below.
         await call.delete({ hard: true });
