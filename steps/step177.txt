@@ -1,0 +1,1 @@
+Now : lets go in terminal > cd backend > "npm install @stream-io/node-sdk@0.7.12" > see the next steps then in stream.js file now there.

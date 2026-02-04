@@ -15,6 +15,7 @@ import { inngest, functions } from "./lib/inngest.js"
 import { clerkMiddleware } from '@clerk/express'
 import { protectRoute } from "./middleware/protectRoute.js";
 import chatRoutes from "./routes/chatRoutes.js"
+import sessionRoutes from "./routes/sessionRoutes.js"
 
 // step13: lets import the dotenv package to be used here to access the environment variables, thus here below.
 // import dotenv from "dotenv"
@@ -64,6 +65,11 @@ app.use("/api/inngest", serve({
 
 // step151: see the next steps in chatRoutes.js file now there, thus here below.
 app.use("/api/chat", chatRoutes)
+
+// step180: now lets get the route for sessions, thus here below.
+
+// step181: see the next steps in sessionRoutes.js file now there, thus here below.
+app.use("/api/sessions", sessionRoutes)
 
 // console.log(process.env.PORT)
 

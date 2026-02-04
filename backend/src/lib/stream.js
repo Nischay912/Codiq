@@ -1,6 +1,7 @@
 // step107: lets first import the package needed to connect the app to Stream’s real-time chat service, thus here below.
 import { StreamChat } from 'stream-chat'
 import { ENV } from '../lib/env.js'
+import { StreamClient } from '@stream-io/node-sdk'
 
 // step108: now lets get the API keys from env file, thus here below.
 const apiKey = ENV.STREAM_API_KEY
@@ -15,6 +16,11 @@ if (!apiKey || !apiSecret) {
 
 // step111: so we use the getInstance method used to make only one chat connection for the app using the API keys, thus here below ; so getInstance allows to prevent duplicate connections and reuse the same connection if it already exists (checked using the API keys), thus here below.
 export const chatClient = StreamChat.getInstance(apiKey, apiSecret)
+
+// step178: so the above instance created in step111 was for interacting with the chat messaging on stream, but now lets create another instance to interact with the video calling, thus here below.
+
+// step179: see the next steps in server.js file now there, thus here below.
+export const streamClient = new StreamClient(apiKey, apiSecret)
 
 // step112: now lets have the function here below that will take the user data coming from clerk and save it to stream dashboard, thus here below.
 export const upsertStreamUser = async(userData) => {
