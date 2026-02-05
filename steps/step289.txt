@@ -1,0 +1,3 @@
+Now : keep all the needed images in the frontend/public folder always, thus here below.
+
+So now delete all that we had earlier in HomePage.jsx file and see the next steps there now, thus here below.

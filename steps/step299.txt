@@ -1,0 +1,17 @@
+Now : to set the theme to be used by DaisyUI, we go in index.html > and set there -
+
+<html lang="en" data-theme="theme_name_matching_daisy_ui_website_there">
+
+, to get the theme go on daisy ui website and on top right choose the theme from there, thus here below.
+
+And then : in index.css do -
+
+@plugin "daisyui" {
+    themes: all;
+}
+
+; so that now we can use all the daisyui themes from index.html there, thus here below.
+
+So : can put any theme later in this index.html file there, thus here below.
+
+See the next steps in HomePage.jsx file now there, thus here below.
