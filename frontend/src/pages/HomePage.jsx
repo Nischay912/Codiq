@@ -10,7 +10,7 @@ import { Link } from "react-router"
 import { ArrowRightIcon, CheckIcon, Code, CodeXml, Laptop, LaptopMinimalCheck, MonitorPlay, Users, VideoIcon, ZapIcon } from "lucide-react"
 import { SignIn, SignInButton } from "@clerk/clerk-react"
 import { useState } from "react"
-import VideoModal from "../../components/VideoModal"
+import VideoModal from "../components/VideoModal"
 
 
 function HomePage() {
