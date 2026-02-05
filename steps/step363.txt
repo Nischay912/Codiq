@@ -1,0 +1,7 @@
+now: lets have a folder "data" with problems in it as objects i.e. we will have there > an object called PROBLEMS and inside the object, we have problem-names and its description object as key-value pairs.
+
+So: for each problem there, we have > id, title, and all there got from AI of leetcode, thus here below.
+
+And, we also have the starter code for the different languages there, i.e. the boilerplate to be shown there, once the user selects a language to code there, thus here below.
+
+See the next steps in ProblemsPage.jsx file now there, thus here below.
