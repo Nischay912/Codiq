@@ -3,11 +3,25 @@ import { Navigate, Route, Routes } from "react-router"
 import HomePage from "./pages/HomePage"
 import ProblemsPage from "./pages/ProblemsPage"
 import { Toaster } from "react-hot-toast"
+import DashboardPage from "./pages/DashboardPage"
+import Loader from "../components/Loader"
 
 function App() {
 
   // step267: so now we will use the useUser hook of clerk, to get various values, thus here below.
-  const { isSignedIn } = useUser()
+
+  // step356: now to get rid of the Flickering effect that comes when we refresh the page once logged in and see the hompage for a split second, we will use the useUser hook of clerk, to get the isLoaded field to solve that problem there, thus here below.
+  const { isSignedIn, isLoaded } = useUser()
+
+  // step357: now the isLoaded tells if the data of clerk is finished loading or not, thus here below ; its initially false when data being loaded, and once its loade, it becomes true, thus here below.
+
+  // step358: so lets show a loading screen while the data is being loaded, thus here below.
+  if(!isLoaded){
+
+    // step359: see the next steps in Loader.jsx file now there, thus here below.
+    return <Loader />
+  }
+
   return (
     <>
       {/* step257: under the Routes component, all the components acn be <Route > only , so <h1> below should be removed, else it will show an error, thus here below. */}
@@ -18,7 +32,19 @@ function App() {
         {/* step258: now lets add the first Route here below, thus here below. */}
 
         {/* step259: it tells here below that, if the user visits the "/" home or the root route, then we will show the below component/element there, thus here below. */}
-        <Route path="/" element = {<HomePage />} />
+
+        {/* step352: so we see the below component, when we visit the "/"  route ; but now let smake it protected using CLERK properties i.e. if they are not signed in > take them to homepage, else take them to the dahsboard page and not show this HOME page once they are signed in, thus here below. */}
+
+        {/* <Route path="/" element = {<HomePage />} /> */}
+
+        < Route path="/" element = {!isSignedIn ? <HomePage /> : <Navigate to={"/dashboard"} />} />
+
+        {/* step353: and then also similarly do the vice versa i.e and lets create one more route here below ; and if user is signed in > take them to the dashboard page, else take them to the homepage, thus here below. */}
+
+        {/* step354: can check this by logging in and then we will ve directed automatically to the /dashboard page there, thus here below. */}
+
+        {/* step355: but we when click refresh, we see a flicker and for a split second, the homepage screen and then instantly CLERK realizes we are authenticated and so we then see the dashboard page there, thus here below. */}
+        < Route path="/dashboard" element = {isSignedIn ? <DashboardPage /> : <Navigate to={"/"} />} />
 
         {/* step260: similarly do for the other pages too like "/about" too (this about page deleted later as we won't be having this page in the final application there), thus here below. */}
 

@@ -1,2 +1,17 @@
 @import "tailwindcss";
-@plugin "daisyui";
+@plugin "daisyui" {
+    themes: all;
+}
+
+/* Add cursor pointer to all buttons by default using the code snippet below - provided by/in the TailwindCSS docs page there online, thus here below */
+@layer base {
+    button:not(:disabled), /* ! still cursor pointer not there for the disabled buttons */
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+}
+
+/* ? */
+/* ! */
+/* * */
+/* different types of comments using the extension : Better Comments */
