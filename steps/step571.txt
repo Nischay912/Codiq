@@ -1,0 +1,7 @@
+Now : to design the code-editor part > we will use a package called "monaco editor in react", thus here below.
+
+So : its the same editor format that VS code also actually uses there ; as on its docs its written also that : "The monaco-editor is a well-known web technology based code editor that powers VS Code", and so we will use this same editor on our website on the browser too there, thus here below.
+
+So go on : https://www.npmjs.com/package/@monaco-editor/react > and do now : cd terminal > "npm i @monaco-editor/react@4.7.0"
+
+Now : see the next steps in ProblemPage.jsx file now there, thus here below.

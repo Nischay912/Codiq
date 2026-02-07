@@ -1,0 +1,92 @@
+Regex = Regular Expression
+
+It’s just a pattern language used to match text.
+
+/abc/ : Means: find the text "abc" ; In JavaScript, regex is written between slashes:Those / are just delimiters ; They mark the start and end of the regex pattern.
+
+Common Backslash Patterns
+
+\s	: whitespace (space, tab, newline)
+\d	: digit (0–9)
+\w	: word character (a-z, A-Z, 0-9, _)
+\n	: newline
+\t	: tab
+
+/\d/ means matches any digit
+
++ : means 1 or more of whats before it , like : /\s+/ : means one or more whitespaces like : "  " and all.
+
+* : means 0 or more
+
+? : means 0 or 1 , like : /colou?r/ : matches both color and colour, as "u" is optional as ? is after "u" and by rule whatever is behind this ? , it can be 0 or 1 , just like in + it means "s" is before +, so there can be 1 or more psace there, similarly here also, thus here below.
+
+g : means globally replace all matches not just the first one found, but all.
+
+So without "g" : "1  2  3".replace(/\s+/, "-") -> gives : "1-2  3" i.e. only 1st space matched got replaced by "-"
+
+with "g" : "1  2  3".replace(/\s+/g, "-") -> "1-2-3" : all " " whitespace replaced by "-"
+
+/[abc]/ : means matches any of a,b,c : just one from the set enclosed by [] not abc whole but any one.
+
+Similarly : /[0-9]/ is like /\d/ i.e. matches any one digit from 0 to 9
+
+So : in our code-
+
+.replace(/\s+/g, "[")
+.replace(/\s+/g, "]")
+.replace(/\s*, \s*/g, ",")
+
+/\s+/g : finds all (as "g" there) groups of 1 or more whitespaces, like "        " or " 1    2" , etc.....
+
+.replace(/\s+/g, "[") : Replace EVERY group of spaces with "[" , example : "[ 1 , 2 ]" -> "[[1,[2,[]" 
+
+Similarly : .replace(/\s+/g, "]") also works for "]" now
+
+/\s*, \s*/g -> Find commas with 0 or more spaces before and after.
+
+It matches -
+
+"1,2"
+"1 ,2"
+"1, 2"
+"1 , 2"
+
+and replaced with "," i.e. "1 , 2" -> "1,2" and this happens everywhere globally as "g" used.
+
+Problem it solves -
+
+User types : [ 0 , 1 ] , but expected output as per problems.js is : [0,1] , Logically same, But string comparison: actual === expected : will say false, Because JavaScript compares characters EXACTLY.
+
+So these regex helps to remove all extra spaces "\n" extra new lines and all other things globally everywhere using "g"
+
+We used in our code that -
+
+.replace(/\[\s+/g, "[") i.e. : find all "[" followed by spaces s+ : and then replace it everywhere "g" globally with just "[" i.e. [                     1, 2] -> [1,2] i.e. the ("[" with spaces after it) replaced with just "[" : so here : ([     ) -> replaced with ([) just this.
+
+Similarly for : .replace(/\s+\]/g, "]") -> it finds s+] i.e. (           ]) spaces followed by "]" and replaces with just ("]") , like if : [1,               2] -> [1,2] i.e. the spaces and the "]" after it whole replaced by just "]" so its not like two "]" comes NOO : it includes finding s+ and ] both i.e. s+] and so the spaces and ] after it got replaced by single "]" so only single "]" came there instead of many there, thus here below.
+
+And the final one : for : replace(/\s*, \s*/g, ",") -> it finds : whatever is between the delimiters / ..... / i.e. here below -
+
+\s*      → zero or more spaces
+,        → literal comma
+\s*      → zero or more spaces
+g        → globally (everywhere)
+
+so the pattern it finds is : ( spaces ) , ( spaces ) written together as : \s*,\s*
+
+SO it finds all "," with spaces that may be there or may not due to * and replaces with just a single "," 
+
+Mtaches all these -
+
+"1,2"
+"1 ,2"
+"1, 2"
+"1 , 2"
+"1      ,        2"
+
+
+So if we had [    1  ,     2   ] -> then firts by the 1st and 2nd regex it becomes : [1  ,     2] ; then by this regex , the leaidng and trailing spaces for , becomes just "," so : [1,2]
+
+We use * here and not + as to keep the code consistent and what if there is spaces on left extra but not on right, then it should match that even 0 spaces on right should match and 0 or more comes matched from * and not +, so for those edge cases better to use * here , thus here below.
+
+Though same exception can't come in [ and ] one above as there weseeing only the spaces after [ and for ] only spaces before it , so only when spaces is 1 or more remove them as logically [1 if ther why replace them with [1 again , its redundancy/unnecessary, thus here below.
