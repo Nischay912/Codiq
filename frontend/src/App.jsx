@@ -5,6 +5,7 @@ import ProblemsPage from "./pages/ProblemsPage"
 import { Toaster } from "react-hot-toast"
 import DashboardPage from "./pages/DashboardPage"
 import Loader from "./components/Loader"
+import ProblemPage from "./pages/ProblemPage"
 
 function App() {
 
@@ -60,7 +61,12 @@ function App() {
         {/* step269: so now if we are not logged in & we try to visit the "/problems" page, then we will be redirected to the "/" page automatically there, thus here below. */}
 
         {/* step270: see the next steps now in HomePage.jsx file now there, thus here below. */}
-        <Route path = "/problems" element = {isSignedIn ? <ProblemsPage /> : <Navigate to="/" />} />
+        <Route path = "/problems" element = {isSignedIn ? <ProblemsPage /> : <Navigate to={"/"} />} />
+
+        {/* step459: now lets create a dynamic route here that will have the route name based on the passed problem id, thus here below. */}
+
+        {/* step460: see the next steps in step461.txt file now there, thus here below. */}
+        <Route path = "/problem/:id" element = {isSignedIn ? <ProblemPage /> : <Navigate to={"/"} />} />
 
         {/* step53: putting the sign in button here from clerk for now, thus here below ; can now test this using cd frontend > npm run dev > and now clicking signIn takes us to the clerk signIn page that we just did setup of it, thus here below. */}
 

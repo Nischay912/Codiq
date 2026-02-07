@@ -535,7 +535,7 @@ int main() {
 export const LANGUAGE_CONFIG = {
   javascript: {
     name: "JavaScript",
-    icon: "/javascript.png",
+    icon: "/javascript.png", // images placed in "public" folder are accessed by just putting a "/" at the bgin and then the name of the image file like "/javascript.png" used here, thus here below.
     monacoLang: "javascript",
   },
   python: {

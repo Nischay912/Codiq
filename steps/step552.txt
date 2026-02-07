@@ -1,0 +1,20 @@
+Now : we have a horizontal scroll bar on the  webpage autmatically coming there > so to remove that > go in ProblemPage.jsx file and remove the "w-screen" class on the very top parent div being returned there.
+
+Its because : w-screen = width: 100vw : so it makes the div to be exactly whole of the viewport width and by rule 100vw includes browser's scrollbar width as well in the whole viewport width, scrollbar gets included too there.
+
+But we know that : Actual visible content area width = 100vw - scrollbar width ; But w-screen forces it to full 100vw including scrollbar ; So our layout becomes slightly wider than visible area ; thus as a result of it there, a horizontal scroll bar appears there.
+
+when we remove the w-screen > default value comes for the width there i.e it now takes the full width of the screen without the horizonatal screenbar or so there now there that was eralier being there due to w-screen or 100vw there ut not due to 100% width that comes here by default now here/there, thus here below ; so no here we have : width: 100% (not 100vw) > and 100% now means that : Take 100% of parent width (which already excludes scrollbar) , so now NO OVERFLOW AND THUS NO horizontal scrollbar there.
+
+| Class      | What It Uses | Includes Scrollbar? | Can Cause Horizontal Scroll? |
+| ---------- | ------------ | ------------------- | ---------------------------- |
+| `w-screen` | `100vw`      | YES                 | Yes                        |
+| `w-full`   | `100%`       | NO                  | No                         |
+
+If scrollbar issue still happens in future, quick fix:
+
+> overflow-x: hidden;
+
+But we don’t use this blindly — we better fix the root cause like we did here, thus here below.
+
+See the next steps in ProblemPage.jsx file now there, thus here below.
