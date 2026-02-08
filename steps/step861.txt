@@ -1,0 +1,17 @@
+Now : lets test to create a session > open mongodb.com > we don't have any sessions document there currently.
+
+Open gostream.io > go to its dahsboard > infact open this link : https://dashboard.getstream.io > choose the CODIQ app > chat messaging > explorer > channels > we don't have any channel there too currently.
+
+Now : when we try to click on CREATE in our app > Internal Server Error comes > stating that : "Error in createSession conroller: Session validation failed: difficulty: `Hard` is not a valid enum value for path `difficulty`."
+
+So : it means : we know that in the : Sessions.js file of backend > we have : enum values allowed for difficulty to be all small cases : ["easy", "medium", "hard"] there ; so instead of changing there to Easy, Medium , Hard : as it may be that somwhere else we used it correctly in all small cases ; so rather there -
+
+Go in > DashBoardPage.jsx file > inside the handleCreateRoom > we do : .toLowerCase() ; so that we send data as it expects in/to the backend from there, thus here below.
+
+Now : if we try again and click on Create there > it navigates us to the > /session/_id page > where _id comes from mongoDB that we had set earlier there.
+
+And now we can see the session in both stream as well as mongoDB there, thus here below.
+
+And so in stream > we can see the chat id in chatmessaging explorer & as well as inside the Video tab there in sidebar > explorer > we can see the call id there as well, thus here below.
+
+See the next steps in DashBoardPage.jsx file now there, thus here below.

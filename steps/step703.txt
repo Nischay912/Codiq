@@ -1,0 +1,3 @@
+Some error was coming on render.com that daisyui not found, it was because i dont know how it was installed and placed in devDependencies and not normal dependencies in the package.json file of the frontend folder here > so we place it in dependencies now from devDependencies as devDependencies are not visible in production, so render.com was not able to install daisyui from there, thus here below.
+
+See the next steps in step704.txt file now there, thus here below.
