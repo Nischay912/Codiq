@@ -1,0 +1,3 @@
+Now : we will be using our own API we had made earlier for the sessions page > so create a new folder : api > and create a file called sessions.js in it, thus here below.
+
+So : see the next steps in sessions.js file now there, thus here below.

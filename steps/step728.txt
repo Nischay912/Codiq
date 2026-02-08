@@ -1,0 +1,25 @@
+Now we can test the hook we made by going in > ProblemsPage.jsx file > then there we can use this hook there and get the different things returned by it as an object, so get what is needed from that returned object by destructuring it using {.....} there, thus here below.
+
+> const {data, isLoading, error} = useActiveSessions()
+
+> console.log(data)
+
+; can even rename the value of data to be stored in a new variable for a better readabiltiy there by doing the following ":" in the syntax there -
+
+> const {data: activeSessions, isLoading, error} = useActiveSessions()
+
+> console.log(activeSessions)
+>console.log(isLoading)
+> .... and so on
+
+Then : we can go in the /problems page > open : INSPECT > CONSOLE
+
+Now : we see there that > since we were not running the backend > so it says GET request failed in console , but then after some times we see that GET request failed again and then again and again ....... till we get the data fetched there ; this shows that useQuery() helps to "refetch" automatically if it failed once, to ensure just in case some error came first time, thus here below.
+
+This is its advantage over useEffect(), where this feature to try refetch again if error came first time is not there, thus here below.
+
+Now we can see that we see a "sessions" object there coming from backend there, thus here below.
+
+So : this is how we can get the sessions like object and fetch data using thses hooks, thus here below.
+
+See the next steps in useSessions.js file now there, thus here below.

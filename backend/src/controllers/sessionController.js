@@ -92,7 +92,19 @@ export async function getActiveSessions(req, res) {
         // step216: sort here will sort it in descending order of createdAt i.e. place the newest sessions first, thus here below.
 
         // step217: also we can put a limit i.e. only show the latest 20 sessions there and not 100 all of them there for example, thus here below.
-        const sessions = await Session.find({ status: "active" }).populate("host", "name profileImage email clerkId").sort({createdAt: -1}).limit(20)
+
+        // const sessions = await Session.find({ status: "active" }).populate("host", "name profileImage email clerkId").sort({createdAt: -1}).limit(20)
+
+        // step885: so in the above code we were populating the "host" field of the sessionsSchema with the actual object instead of just the id ; but now we want to do same for the participants as well, so that we can get the participant's clerkId and all too, which will be used in the frontend to chekc if the user is a participant or not by comparing the clerkId of participant with the clerkId of the user, thus here below.
+
+        // step886: so in the same method above, we do same : but now for the "participant" field, thus here below.
+
+        // step887: see the next steps in frontend > DashboardPage.jsx file now there, thus here below.
+        const sessions = await Session.find({ status: "active" })
+        .populate("host", "name profileImage email clerkId")
+        .populate("participant", "name profileImage email clerkId")
+        .sort({createdAt: -1})
+        .limit(20)
 
         // step218: now we finally send this response to the client, thus here below.
         res.status(200).json({ sessions : sessions }) // status code 200 means "OK"

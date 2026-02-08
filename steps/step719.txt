@@ -1,0 +1,7 @@
+Now : we will be using these session files as mutations and as queries in TanStack query.
+
+A QUERY is something when we want to fetch some data i.e. we want to make a GET request ; MUTATION is something when we want to mutate/modify/change something in the database i.e. we want to create something/ delete something / update ... and so on.
+
+To use QUERY : we have a method called useQuery() and for mutations we have useMutation() hooks. 
+
+So: lets implement these hooks now ; so see the next steps in useSessions.js file there now.
