@@ -1,5 +1,5 @@
 import { BookOpen, Code2Icon, StepForward } from "lucide-react"
-import Navbar from "../components/NavBar"
+import Navbar from "../components/Navbar"
 import { PROBLEMS } from "../data/problems"
 import { Link } from "react-router";
 import { getDifficultyBadgeClass } from "../lib/utils";
