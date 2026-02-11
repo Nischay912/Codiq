@@ -101,7 +101,7 @@ function VideoModal({ show, onClose }) {
         */}
         <iframe
           className="w-[90vw] max-w-3xl aspect-video rounded-xl"
-          src="https://www.youtube.com/embed/GhOxXWno8og?autoplay=1&rel=0"
+          src="https://www.youtube.com/embed/QVs4ZbeT9sk?si=7ksaW0fKBpPOrz9N"
           title="Demo Video"
           allowFullScreen
         />
