@@ -84,7 +84,7 @@ export const useSessionById = (id) => {
         // step746: so this makes it safe to run the query only if id is there, to prevent app from crashing as without "id" if we run this, it may crash as we have id = undefined and we are passing it into the function here/there ; Prevents accidental API calls like: /sessions/undefined and thus prevents app from crashing, thus here below.
         enabled: !!id,
 
-        // step747: now we know that useQuery() makes the call regualrly one by one till a data is fetched , so even if call faisl it keeps on calling it ; so now we can add the refetch interval here to make it call the API regualrly to detect the status of the session after every 5 seconds ; called POLLING i.e. used when session status may change from "active" to "completed" later ; we know useQuery() runs again again till data is loaded ; but once lets say data loaded for an active session, then it stops ; now if the status of session changes from "active" to "completed" later, then it will not be calling again automatically as it has fetched data so it stopped already ; thats why we use refetchInterval so that every 5 seconds it will keep on calling the API and checking the status and update it automatically if status of the session changes from "active" to "completed" anytime after the data was first time loaded by this useQuery there earlier here/there, thus here below.
+        // step747: now we know that useQuery() makes the call regualrly one by one till a data is fetched , so even if call fails it keeps on calling it ; so now we can add the refetch interval here to make it call the API regualrly to detect the status of the session after every 5 seconds ; called POLLING i.e. used when session status may change from "active" to "completed" later ; we know useQuery() runs again again till data is loaded ; but once lets say data loaded for an active session, then it stops ; now if the status of session changes from "active" to "completed" later, then it will not be calling again automatically as it has fetched data so it stopped already ; thats why we use refetchInterval so that every 5 seconds it will keep on calling the API and checking the status and update it automatically if status of the session changes from "active" to "completed" anytime after the data was first time loaded by this useQuery there earlier here/there, thus here below.
         refetchInterval: 5000, // refetch every 5 seconds to detect session status changes
     })
 
@@ -93,7 +93,15 @@ export const useSessionById = (id) => {
 }
 
 // step749: now we can have more hooks now here below, thus here below.
-export const useJoinSession = (id) => {
+
+// step1042: now we remove the parameter "id" from here below in both join and end session because of the reason told in step1039 and 1040 earlier there, thus here below.
+
+// step1043: and so we also change here below the : mutationFn: () => sessionApi.endSession(id) into : mutationFn: sessionApi.endSession ; as here below now : earlier we had "id" passed in the function, so we wrapped the mutationFn using arrow function as arrow function is not called immediately but called when user wants , so the function manually called the API using the id when we called mutate() method in SessionPage there ; but now we are not passsing the "id" here and rather just using a refernce of the endSession and joinSession API from sessions.js file here, so : we saw in step1039 that we now pass the id when calling: endSessionMutation.mutate(id) there ; so react internally automatically takes whatever we pass into mutate(id) and provides it as the argument to mutationFn; so internally mutationFn(id) -> sessionApi.endSession(id) ; so now : we can directly pass the function reference and This works because React Query will automatically call: sessionApi.endSession(id) when : mutationFn: sessionApi.endSession is hit there, thus here below.
+
+// step1044: so it means : now when we do mutate(id) in SessionPage , it takes the "id" and pass to the refernece mention here below i.e to the joinSession function of sessins.js directly and there we know and saw the "id" will be used to make call to the URL with that id here/there, thus here below.
+
+// step1045: see the next steps in SessionPage.jsx file now there, thus here below.
+export const useJoinSession = () => {
 
     // step750: we know we had join session as a POST request and not to fetch data via GET , so this will be useMutation and not usequery as we know that useQuery is used to fetch data and not to change data, thus here below.
 
@@ -102,7 +110,7 @@ export const useJoinSession = (id) => {
 
         // step752: same as done above here also done all, thus here below.
         mutationKey: ["joinSession"],
-        mutationFn: () => sessionApi.joinSession(id),
+        mutationFn: sessionApi.joinSession,
         onSuccess: () => {
             toast.success("Session joined successfully!")
         },
@@ -116,10 +124,10 @@ export const useJoinSession = (id) => {
 // step753: similarly ending a session removes a participant from session and thus changes the database, so: here also we will use useMutation as by rule useMutation is used to change data, thus here below.
 
 // step754: now see the next steps in DashboardPage.jsx file now there, thus here below.
-export const useEndSession = (id) => {
+export const useEndSession = () => {
     const result = useMutation({
         mutationKey: ["endSession"],
-        mutationFn: () => sessionApi.endSession(id),
+        mutationFn: sessionApi.endSession,
         onSuccess: () => {
             toast.success("Session ended successfully!")
         },

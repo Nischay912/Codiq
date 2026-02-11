@@ -20,7 +20,7 @@ export async function getStreamToken(req, res){
             token,
             userId: req.user.clerkId,
             userName: req.user.name,
-            userImage: req.user.image
+            userImage: req.user.profileImage // add same name as in mongoDB i.e. profileImage and not just user.image as on doing console to "user" before response sending to client side if we console log "user" , we see the field name as "profileImage" not "image" there, thus here below.
 
         }) 
     }

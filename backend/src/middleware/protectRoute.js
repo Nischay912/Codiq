@@ -3,6 +3,7 @@ import { requireAuth } from "@clerk/express"
 
 // step131: now we will also be using the User model, thus here below.
 import User from "../models/User.js"
+import { clerkClient } from "@clerk/clerk-sdk-node";
 
 // step132: now we will have this protectRoute below, which will actually be an array ; becaus ein Express we can have multiple middlewares for a route, so express treats it like an array ; so we have an array here to group multiple middlewares together ; so when we pass an array of middleware to Express, it automatically flattens and executes them sequentially, thus here below.
 export const protectRoute = [
@@ -32,7 +33,20 @@ export const protectRoute = [
             // step139: if the user is not found, we return with status 404, which means "NOT FOUND", thus here below.
             if(!user) return res.status(401).json({ message : "User not found"})
 
-            // step140: but if the user is ther, then we attach that user document of MongoDB to the request "req" , so now : req has : req = { body: {...}, params: {...}, query: {...}, auth: function(){}, user: {...} , ..}thus here below ; so thus : req.user = user stores the logged-in user data inside the request so all next middlewares/controllers can use it, thus here below.
+            // Fetch latest Clerk data
+            const clerkUser = await clerkClient.users.getUser(clerkId);
+
+            // Sync image + name (optional to sync the name too but recommended, so that both name and image from CLERK is synced ; we put "IF" check below in the name update as sometimes clerk at beginning when app start may have fullName as "undefined", so then doing undefined.fullName can cause error, so beetter to put this if check ; so that later if this middleware runs again or this middleware triggered again when API ca;;s made from forntedn such that it has to go throught this middleware there, then at that time, till that time if clerk.fullName would have loaded successfully and not undefined then now ; then we will update mongoDB by same name from clerk, so that clerk's name is synced to mongoDB name too and since mongoDB is linked to STREAM ; so in stream vidoe also , we will see the synced name same as clerk there in video layout too there, thus here below.)
+            user.profileImage = clerkUser.imageUrl;
+            if (clerkUser.fullName) {
+                user.name = clerkUser.fullName;
+            }
+
+            await user.save();
+
+            // attach updated user below
+
+            // step140: but if the user is there, then we attach that user document of MongoDB to the request "req" , so now : req has : req = { body: {...}, params: {...}, query: {...}, auth: function(){}, user: {...} , ..}thus here below ; so thus : req.user = user stores the logged-in user data inside the request so all next middlewares/controllers can use it, thus here below.
             req.user = user
 
             // step141: now always at end of middleware we write the next() to tell that the middleware has been passed without returning with error anywhere before, so we can call the next method that was written after this middleware, wherever this middleware is exported and used, thus here below.

@@ -6,6 +6,7 @@ import { Toaster } from "react-hot-toast"
 import DashboardPage from "./pages/DashboardPage"
 import Loader from "./components/Loader"
 import ProblemPage from "./pages/ProblemPage"
+import SessionPage from "./pages/SessionPage"
 
 function App() {
 
@@ -67,6 +68,11 @@ function App() {
 
         {/* step460: see the next steps in step461.txt file now there, thus here below. */}
         <Route path = "/problem/:id" element = {isSignedIn ? <ProblemPage /> : <Navigate to={"/"} />} />
+
+        {/* step1026: now lets have another route for the "/session/:id" that we were redirecting too, where id came from mongoDB dynamically, so its a dynamic route, thats why we have ":id" here, thus here below. */}
+
+        {/* step1027: see the next steps in SessionPage.jsx file now there, thus here below. */}
+        <Route path = "/session/:id" element = {isSignedIn ? <SessionPage /> : <Navigate to={"/"} />} />
 
         {/* step53: putting the sign in button here from clerk for now, thus here below ; can now test this using cd frontend > npm run dev > and now clicking signIn takes us to the clerk signIn page that we just did setup of it, thus here below. */}
 

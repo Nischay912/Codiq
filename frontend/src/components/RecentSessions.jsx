@@ -2,7 +2,7 @@
 
 // step961: first lets get this library by doing > cd frontend >"npm i date-fns" > then use the package here below to automatically convert and format dates easily for us than manually writing equations to do so, thus here below.
 import { formatDistanceToNow } from "date-fns"
-import { Clock, FolderOpen, History, Loader, Loader2Icon, Trophy, Users } from "lucide-react"
+import { Clock, Code2Icon, FolderOpen, History, Loader, Loader2Icon, Trophy, Users } from "lucide-react"
 import { getDifficultyBadgeClass } from "../lib/utils"
 
 // step962: now lets get the props passed here by destructuring them as by rules its passed as an object and must be destructure dhere below using the {....} syntax in order to use them here below in this function here/there & the name of the props must match to the left hand side of the prop names we gave while passing it to this component in the DashboardPage.jsx file here/there at that time here/there ; so instead of just getting (props) and later using props.sessions or props.isLoading we use the destructured props here below for more easiness and more easily usability, thus here below.
@@ -104,7 +104,7 @@ function RecentSessions({ sessions, isLoading }) {
                             }`}
                           >
                             {/* step989: now we have the icon in white color its outlines using text-white and since both w-6 h-6 used, so we can also have : size-6 instead of w-6 h-6 as by rule : size-6 is a substitute for w-6 h-6, thus here below. */}
-                            <Code2 className = "w-6 h-6 text-white" />
+                            <Code2Icon className = "w-6 h-6 text-white" />
                           </div>
 
                           {/* step990: now lets have a div which : uses Tailwind CSS where flex-1 allows this section to take remaining horizontal space inside flex layout, and min-w-0 prevents overflow by allowing content like long titles to shrink properly inside flex container, thus here below ; so basically like we told about uses of min-w-0 in activeSessions component too, can see there if want to know why used, its basically used to ensure that the text has minm of some enought width possible and is not overflown ; its usually always used as parent of class with truncate" , we surely have truncate class below it which makes extra part into ... ; but then for rest to fit there and not overflow, this min-w-0 is used here/there, to make sure that its not overflown here/there, thus here below. */}

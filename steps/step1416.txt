@@ -1,0 +1,11 @@
+Another error was coming later that cannot join call that has ended, when we tried to end session from one account, then showed this error on participant screen when he was navigated > and said in console : "can't use a channel after client.disconnect was called" and later showed toast on refrehsing that "failed to join video call" > and in console "call not exists", thus here below.
+
+So to fix this > go in useStreamClient.js file > in the initCall() method > there before the try-catch block > add that -
+
+if(session.status === "completed"){
+    return
+}
+
+i.e. if session is completed just return don't even try to make a call ahead as may give error like "failed to join video call" > and in console "call not exists" as once completed > channel and call got disconnected and now not defined , so may get these errors if this not put up here/there, thus here below.
+
+So: see the next steps there in useStreamClient.js file now there, thus here below.
