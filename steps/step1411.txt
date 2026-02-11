@@ -1,0 +1,11 @@
+Now : all setup has been done for both video and chat there > so we can tets the chat there too.
+
+Go in chat option there > type messages and send , it will work > we can also add images and send > to send GIFs > type "/giphy hello" , "/giphy how are you?" , and so on... > it will then ask SEND, SHUFFLE , CANCEL : to choose if that GIF is good , send it ; OR shuffle and choose some other GIF for the same OR CANCEL the sending there, "ALL IN-BUILT FROM THE STREAM THERE", thus here below.
+
+Since we used the <Thread /> component in its architecture made in VideoCallUI.jsx file ; so we can even hover on a message and choose reply symbol there to create a thread for  amessage and reply for that message there ; it would not be possible to do so if we didn't use <Thread /> component here/there, thus here below.
+
+We can make it light theme by removing the "dark" theme value put in <Chat .... theme="" /> component here/there, thus here below.
+
+It will also show "Typing...." there ALL-IN-BUILT-FEATURES" from stream & thus we will be able to see if someone else OR others are when typing in here/there, thus here below.
+
+See the next steps in step1412.txt file now there, thus here below.

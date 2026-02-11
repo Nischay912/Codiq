@@ -1,0 +1,15 @@
+Now : to make the video calling and the chat messaging work now : lets have > cd frontend > "npm i stream-chat@9.23.0 @stream-io/video-react-sdk@1.24.0 stream-chat-react@13.9.0" 
+
+So : this package in -
+
+stream-chat : to send and reciev message , real-time updates , reactions, moderation history, etc ; thus here below ; so it helps to connect to Stream chat's backend and implement the logic there, thus here below.
+
+stream-io/video-react-sdk : helps in video calling ; allows 1-to-1 video calls , group video calls , screen sharing call joining/leaving , etc features like : helps to implement the : Video calling functionality.
+
+stream-chat-react : helps to give the frontend components for styling the chat messaging ; provides the react UI layer/features for the chat, with prebuilt components like <Chat />, <Channel />, <MessageList />, <MessageInput />, etc there, thus here below.
+
+So : Instead of building chat UI from scratch, this gives you everything ready ; its : The ready-made UI for your chat app.
+
+So overall : tream-chat → backend logic ; stream-chat-react → frontend components, thus here below.
+
+See the next steps in stream.js file now there, thus here below.

@@ -1,0 +1,1 @@
+We later saw teacher said : the issue can be fixed simply by doing ?. after difficulty in the switch(...) of the utils.js file > as error aa toh vahi se raha tha > so best is to add ?. there ; so that jabtak session load na ho jaye , no need to try to do toLowerCase as by logic, doing toLowerCase on undefined > will obviously casue an error there, thus here below.

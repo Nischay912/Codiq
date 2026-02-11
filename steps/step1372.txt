@@ -1,0 +1,49 @@
+We see now that when we use the panel of callComponents there > we don't see the clerk image, we had set up in navbar > same is not seen on closing video there coming from clerk.
+
+SO : the first error we fixed was that in chatController.js of backend > we were sending response as : req.user.image > but the schema of user had "profileImage" and not "image" > so we fixed that to : req.user.profileImage there, thus here below.
+
+---------------------------------------------------------------------------------------------------
+
+We could see the image in navbar ther we had set for our profile on CLERK, but still we can't see the clerk image there when video turned off ; it was because -
+
+- Navbar image uses Clerk user.imageUrl directly from frontend.
+- Stream Video image uses MongoDB profileImage.
+- If the user changed their profile picture in Clerk after signup, then:
+- Clerk had the new image.
+- MongoDB still had the old image.
+- So mismatch happened.
+
+- MongoDB was not being updated when the user changed their profile picture in Clerk.
+-So Stream was using an outdated image stored in MongoDB.
+
+---------------------------------------------------------------------------------------------------
+
+so we went in protectRoute middleware of backend and there we added -
+
+---------------------------------------------------------------------------------------------------
+
+const clerkUser = await clerkClient.users.getUser(clerkId);
+
+user.profileImage = clerkUser.imageUrl;
+
+await user.save();
+
+---------------------------------------------------------------------------------------------------
+
+So : we did cd backend > "npm install @clerk/clerk-sdk-node" > and installed Clerk backend SDK > Then imported it there as follows > import { clerkClient } from "@clerk/clerk-sdk-node";
+
+then after that : we used the clerkId to > fetch latest clerk details from its backend using the clerk backend SDK (software development kit) we installed : const clerkUser = await clerkClient.users.getUser(clerkId);
+
+Then we : synced the latest image from Clerk stored there as "imageUrl" to the profileImage for the user model of the logged in user in MongoDB > so : We overwrite MongoDB profileImage with latest Clerk image there.
+
+and then we saved the user document again to MongoDB using the save() method there, thus here below.
+
+---------------------------------------------------------------------------------------------------
+
+; and now the > updated image is updated in both navbar and video layout when video is closed using callControls there : as now mongoDB is synced to change in profileImage from clerk and so is updated there too automatically there now here/there, thus here below.
+
+---------------------------------------------------------------------------------------------------
+
+See the next steps in VideoCallUI.jsx file now there, thus here below.
+
+

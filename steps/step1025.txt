@@ -1,0 +1,5 @@
+So now : lets make another route for the session/:id page that was being redirected to when we clicked on the CREATE SESSION page earlier there, thus here below.
+
+MEANWHILE : CREL+SHIFT+P > ORGANIZE IMPORTS > can help to get rid of all un-necessary imports from all files, thus here below.
+
+Sess the next steps in App.jsx file now there, thus here below.
