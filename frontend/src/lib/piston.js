@@ -102,6 +102,13 @@ export async function executeCode(language, code) {
             })
         });
 
+        if(response.status === 401){
+            return {
+                success:false,
+                error:"Execution service busy. Please try later."
+            }
+        }
+
         // step446: now first we check if the response recieved is OK or not i.e. the request was successful or not, thus here below.
 
         // step447: we know async function returns a Promise, so even if we didn't write Promise.resolve() here, but JS will do it automatically because we have specified the return type of the function as "async" and thus resolve the output of the function to an object with the passed and the firlds being reteunred / fields to be returned , thus here below.
