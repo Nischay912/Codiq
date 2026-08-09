@@ -127,12 +127,6 @@ Contributions, issues, and feature requests are welcome!
 
 ---
 
-## 📄 License
-
-This project is licensed under the MIT License — feel free to use it for your own projects.
-
----
-
 ## 👤 Author
 
 Built with ❤️ by **[Nischay Kumar]**
